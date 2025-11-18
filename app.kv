@@ -1,12 +1,24 @@
 ScreenManager:
+    SplashScreen:
     LoginScreen:
     MainScreen:
+
+<SplashScreen>:
+    name: "splash"
+    BoxLayout:
+        orientation: "vertical"
+        padding: 30
+        spacing: 20
+        Label:
+            text: "[color=#FFD700][b]الجنرال سيد المصري[/b]\nVIP[/color]"
+            markup: True
+            font_size: 38
 
 <LoginScreen>:
     name: "login"
     GridLayout:
         cols: 1
-        padding: 20
+        padding: 25
         spacing: 15
 
         TextInput:
@@ -17,8 +29,8 @@ ScreenManager:
         TextInput:
             id: password
             hint_text: "Password"
-            multiline: False
             password: True
+            multiline: False
 
         TextInput:
             id: phone
@@ -28,36 +40,29 @@ ScreenManager:
         Label:
             id: status
             text: ""
-            color: 1,0,0,1
+            markup: True
 
         Button:
-            text: "Login VIP"
+            text: "⭐ تسجيل الدخول VIP"
             on_release: root.login_user()
 
 <MainScreen>:
     name: "main"
-
-    BoxLayout:
-        orientation: "vertical"
+    GridLayout:
+        cols: 1
         padding: 20
         spacing: 20
 
         Label:
-            text: "الجنيرال سيد المصري VIP"
-            font_size: 28
-            bold: True
-            color: 1,0.84,0,1   # ذهبي ملكي
-
-        Label:
             id: user_info
-            text: "Loading..."
-            font_size: 18
+            text: ""
+            markup: True
+            font_size: 20
 
         Button:
-            text: "📩 تواصل مع الجنرال"
-            font_size: 20
+            text: "📩 تواصل تليجرام"
             on_release: app.open_telegram()
 
         Button:
-            text: "تسجيل خروج"
+            text: "🚪 تسجيل خروج"
             on_release: app.logout()
