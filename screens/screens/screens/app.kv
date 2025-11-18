@@ -1,0 +1,125 @@
+#:kivy 2.1.0
+
+<SplashScreen>:
+    name: "splash"
+    FloatLayout:
+        canvas.before:
+            Color:
+                rgba: 0.08, 0.08, 0.15, 1
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        Label:
+            text: "Hekaya VIP"
+            font_size: "38sp"
+            bold: True
+            color: 1, 0.8, 0.1, 1
+            pos_hint: {"center_x": 0.5, "center_y": 0.55}
+        Label:
+            text: "Loading..."
+            font_size: "16sp"
+            color: 0.7, 0.7, 0.7, 1
+            pos_hint: {"center_x": 0.5, "center_y": 0.40}
+
+<LoginScreen>:
+    name: "login"
+    email: email
+    password: password
+    phone: phone
+    status: status
+
+    BoxLayout:
+        orientation: "vertical"
+        padding: 30
+        spacing: 18
+
+        canvas.before:
+            Color:
+                rgba: 0.07, 0.07, 0.13, 1
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+        Label:
+            text: "Hekaya VIP Login"
+            font_size: "28sp"
+            bold: True
+            color: 1, 0.8, 0.1, 1
+            size_hint_y: None
+            height: 70
+
+        TextInput:
+            id: email
+            hint_text: "Email"
+            multiline: False
+            size_hint_y: None
+            height: 55
+            background_color: 0.15, 0.15, 0.22, 1
+            foreground_color: 1,1,1,1
+            padding: 12
+
+        TextInput:
+            id: password
+            hint_text: "Password"
+            multiline: False
+            password: True
+            size_hint_y: None
+            height: 55
+            background_color: 0.15, 0.15, 0.22, 1
+            foreground_color: 1,1,1,1
+            padding: 12
+
+        TextInput:
+            id: phone
+            hint_text: "Phone Number"
+            multiline: False
+            size_hint_y: None
+            height: 55
+            background_color: 0.15, 0.15, 0.22, 1
+            foreground_color: 1,1,1,1
+            padding: 12
+
+        Button:
+            text: "Login"
+            size_hint_y: None
+            height: 60
+            background_color: 1, 0.8, 0.1, 1
+            color: 0,0,0,1
+            bold: True
+            on_release:
+                root.login_user()
+
+        Label:
+            id: status
+            text: ""
+            font_size: "16sp"
+            color: 1, 0.3, 0.3, 1
+            size_hint_y: None
+            height: 30
+
+<MainScreen>:
+    name: "main"
+
+    BoxLayout:
+        orientation: "vertical"
+        padding: 20
+        spacing: 10
+
+        canvas.before:
+            Color:
+                rgba: 0.06, 0.06, 0.12, 1
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+        Label:
+            text: "Welcome to Hekaya VIP"
+            font_size: "28sp"
+            bold: True
+            color: 1, 0.8, 0.1, 1
+            size_hint_y: None
+            height: 60
+
+        Label:
+            id: user_info
+            text: "Loading user info..."
