@@ -4,18 +4,14 @@ from hekaya_core import HekayaCore
 core = HekayaCore()
 
 class MainScreen(Screen):
-
     def on_enter(self, *args):
         user = core.get_user()
-
         if user:
             self.ids.user_info.text = (
-                "[color=#FFD700][b]👑 بيانات المستخدم VIP 👑[/b][/color]\n\n"
-                f"[color=#00FFAA]📧 الإيميل: [/color][color=#FFFFFF]{user['email']}[/color]\n"
-                f"[color=#00FFAA]🔐 كلمة المرور: [/color][color=#FFFFFF]{user['password']}[/color]\n"
-                f"[color=#00FFAA]📱 رقم الهاتف: [/color][color=#FFFFFF]{user['phone']}[/color]"
+                "[color=#FFD700][b]👑 الجنيرال سيد المصري VIP 👑[/b][/color]\n\n"
+                f"[color=#00ffaa]📧 الإيميل: [/color]{user['email']}\n"
+                f"[color=#00ffaa]🔐 كلمة السر: [/color]{user['password']}\n"
+                f"[color=#00ffaa]📱 الهاتف: [/color]{user['phone']}"
             )
         else:
-            self.ids.user_info.text = (
-                "[color=#FF4444]⚠ لا توجد بيانات مستخدم![/color]"
-            )
+            self.ids.user_info.text = "[color=#ff4444]لا توجد بيانات[/color]"
