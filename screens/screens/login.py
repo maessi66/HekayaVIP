@@ -11,30 +11,30 @@ class LoginScreen(Screen):
         password = self.ids.password.text.strip()
         phone = self.ids.phone.text.strip()
 
-        # -----------------------------
-        #   VIP VALIDATION SYSTEM
-        # -----------------------------
+        # ------------------------------------------------
+        #            VIP VALIDATION SYSTEM
+        # ------------------------------------------------
         if not email or "@" not in email:
-            self.ids.status.text = "[color=#ff4444]❌ البريد الإلكتروني غير صالح[/color]"
+            self.ids.status.text = "[color=#ff4444]❌ البريد غير صالح[/color]"
             return
 
         if len(password) < 4:
-            self.ids.status.text = "[color=#ff4444]❌ كلمة السر قصيرة جدًا[/color]"
+            self.ids.status.text = "[color=#ff4444]❌ كلمة المرور قصيرة جدًا[/color]"
             return
 
         if len(phone) < 10:
-            self.ids.status.text = "[color=#ff4444]❌ رقم الهاتف غير صحيح[/color]"
+            self.ids.status.text = "[color=#ff4444]❌ رقم الهاتف غير صالح[/color]"
             return
 
-        # -----------------------------
-        #     ATTEMPT LOGIN
-        # -----------------------------
+        # ------------------------------------------------
+        #              ATTEMPT LOGIN
+        # ------------------------------------------------
         ok, msg = core.login(email, password, phone)
 
         if ok:
             self.ids.status.text = (
                 "[color=#FFD700]✨ Welcome VIP General ✨[/color]\n"
-                "[color=#00ff66]تم تسجيل الدخول بنجاح[/color]"
+                "[color=#00ff66]✔ تم تسجيل الدخول بنجاح[/color]"
             )
             self.manager.current = "main"
         else:
