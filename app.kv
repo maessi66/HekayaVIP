@@ -1,152 +1,63 @@
-#:kivy 2.1.0
-<GoldButton@Button>:
-    background_normal: ''
-    background_color: 0,0,0,0
-    canvas.before:
-        Color:
-            rgba: 1.0, 0.84, 0.0, 1     # ذهبى
-        RoundedRectangle:
-            pos: self.pos
-            size: self.size
-            radius: [12,]
-    color: 0,0,0,1
-    font_size: '18sp'
-    bold: True
-
-<SplashScreen>:
-    name: "splash"
-    FloatLayout:
-        canvas.before:
-            Color:
-                rgba: 0.06,0.06,0.06,1
-            Rectangle:
-                pos: self.pos
-                size: self.size
-        Label:
-            text: "الجنيرال سيد المصري\nVIP"
-            halign: "center"
-            valign: "middle"
-            font_size: '34sp'
-            bold: True
-            color: 1,0.84,0,1
-            pos_hint: {"center_x":0.5, "center_y":0.55}
-        Label:
-            text: "t.me/maessi2012"
-            font_size: '14sp'
-            color: 1,1,1,0.8
-            pos_hint: {"center_x":0.5, "center_y":0.4}
+ScreenManager:
+    LoginScreen:
+    MainScreen:
 
 <LoginScreen>:
     name: "login"
-    BoxLayout:
-        orientation: 'vertical'
-        padding: dp(20)
-        spacing: dp(12)
-        canvas.before:
-            Color:
-                rgba: 0.06,0.06,0.06,1
-            Rectangle:
-                pos: self.pos
-                size: self.size
-
-        Label:
-            text: "تسجيل الدخول VIP"
-            font_size: '24sp'
-            size_hint_y: None
-            height: dp(50)
-            color: 1,0.84,0,1
-            bold: True
+    GridLayout:
+        cols: 1
+        padding: 20
+        spacing: 15
 
         TextInput:
             id: email
-            hint_text: "البريد الإلكتروني"
-            size_hint_y: None
-            height: dp(48)
-            background_normal: ''
-            background_color: 0.12,0.12,0.12,1
-            foreground_color: 1,1,1,1
-            padding: [10,12]
+            hint_text: "Email"
+            multiline: False
 
         TextInput:
             id: password
-            hint_text: "كلمة المرور"
+            hint_text: "Password"
+            multiline: False
             password: True
-            size_hint_y: None
-            height: dp(48)
-            background_normal: ''
-            background_color: 0.12,0.12,0.12,1
-            foreground_color: 1,1,1,1
-            padding: [10,12]
 
         TextInput:
             id: phone
-            hint_text: "رقم الهاتف (اختياري)"
-            size_hint_y: None
-            height: dp(48)
-            background_normal: ''
-            background_color: 0.12,0.12,0.12,1
-            foreground_color: 1,1,1,1
-            padding: [10,12]
+            hint_text: "Phone"
+            multiline: False
 
         Label:
             id: status
             text: ""
-            font_size: '14sp'
-            color: 1,0.6,0.2,1
-            size_hint_y: None
-            height: dp(24)
+            color: 1,0,0,1
 
-        GoldButton:
-            text: "دخول"
-            size_hint_y: None
-            height: dp(52)
+        Button:
+            text: "Login VIP"
             on_release: root.login_user()
-
-        Widget:
-            size_hint_y: None
-            height: dp(8)
-
-        AnchorLayout:
-            anchor_x: 'center'
-            anchor_y: 'bottom'
-            size_hint_y: None
-            height: dp(36)
-            Label:
-                text: "الجنيرال سيد المصري • VIP 3"
-                color: 1,0.84,0,1
-                font_size: '12sp'
 
 <MainScreen>:
     name: "main"
-    BoxLayout:
-        orientation: 'vertical'
-        padding: dp(16)
-        spacing: dp(12)
-        canvas.before:
-            Color:
-                rgba: 0.04,0.04,0.04,1
-            Rectangle:
-                pos: self.pos
-                size: self.size
 
-        BoxLayout:
-            size_hint_y: None
-            height: dp(72)
-            padding: dp(8)
-            spacing: dp(8)
-            Label:
-                text: "مرحبا، الجنيرال سيد المصري"
-                color: 1,0.84,0,1
-                font_size: '20sp'
-                bold: True
-            Button:
-                text: "تواصل"
-                size_hint_x: None
-                width: dp(120)
-                on_release: app.open_telegram()
+    BoxLayout:
+        orientation: "vertical"
+        padding: 20
+        spacing: 20
 
         Label:
-            text: "لوحة التحكم سوف تُعرض هنا..."
-            color: 1,1,1,0.85
-            halign: 'center'
-            valign: 'middle'
+            text: "الجنيرال سيد المصري VIP"
+            font_size: 28
+            bold: True
+            color: 1,0.84,0,1   # ذهبي ملكي
+
+        Label:
+            id: user_info
+            text: "Loading..."
+            font_size: 18
+
+        Button:
+            text: "📩 تواصل مع الجنرال"
+            font_size: 20
+            on_release: app.open_telegram()
+
+        Button:
+            text: "تسجيل خروج"
+            on_release: app.logout()
