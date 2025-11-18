@@ -1,7 +1,25 @@
 import webbrowser
+from kivy.app import App
+from kivy.lang import Builder
+from kivy.uix.screenmanager import ScreenManager
 
-def open_telegram(self):
-    webbrowser.open("https://t.me/maessi2012")
+# Load KV file
+Builder.load_file("app.kv")
 
-def logout(self):
-    self.root.current = "login"
+class MyScreenManager(ScreenManager):
+    pass
+
+class MainApp(App):
+
+    def build(self):
+        return MyScreenManager()
+
+    def open_telegram(self):
+        webbrowser.open("https://t.me/maessi2012")
+
+    def logout(self):
+        self.root.current = "login"
+
+
+if __name__ == "__main__":
+    MainApp().run()
