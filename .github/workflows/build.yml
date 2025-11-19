@@ -1,13 +1,14 @@
-Name: Android CI
-​on: [push]
-​jobs:
+name: Android CI
+on: [push]
+jobs:
 build:
 runs-on: ubuntu-latest
 steps:
 - uses: actions/checkout@v4
 - uses: actions/setup-python@v5
 with:
-python-version: '3.11'  - name: Cache Buildozer
+python-version: '3.11'
+  - name: Cache Buildozer
     uses: actions/cache@v4
     with:
       path: .buildozer
@@ -16,7 +17,7 @@ python-version: '3.11'  - name: Cache Buildozer
   - name: Build Kivy App
     uses: xloem/buildozer-action@v1
     with:
-      # تم تغيير الأمر إلى debug لتجاوز أخطاء التوقيع (Signing)
+      # تم تغيير الأمر إلى debug لتجاوز أخطاء التوقيع (Signing) وضمان الحصول على APK
       command: buildozer android debug 
       
   - name: Upload Artifact
@@ -25,3 +26,4 @@ python-version: '3.11'  - name: Cache Buildozer
       name: Hekaya-VIP-APK
       # هذا هو المسار الذي يتم فيه حفظ ملف APK بعد البناء
       path: bin/*.apk
+
