@@ -18,7 +18,7 @@ jobs:
           key: ${{ runner.os }}-buildozer-${{ hashFiles('buildozer.spec') }}
       
       - name: Build Kivy App
-        uses: xloem/buildozer-action@v1.9.0
+        uses: xloem/buildozer-action@v1
         with:
           # هذا الأمر سيقوم بالبناء التلقائي لملف APK
           command: buildozer android release
