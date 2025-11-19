@@ -1,9 +1,9 @@
 # main.py
+# تم استخدام مكتبة plyer بدلاً من webbrowser القياسي لضمان عمله على Android
 from kivy.app import App
 from kivy.lang import Builder
 from kivy.uix.screenmanager import ScreenManager
-# نستخدم plyer بدلاً من webbrowser القياسي لضمان عمله على Android
-from plyer import webbrowser
+from plyer import webbrowser # تم التعديل إلى plyer
 
 # Load KV layout
 Builder.load_file("app.kv")
@@ -24,6 +24,7 @@ class MainApp(App):
         try:
             self.root.current = "login"
         except Exception:
+            # بديل عام
             for s in self.root.screens:
                 if s.name == "login":
                     self.root.current = "login"
