@@ -10,7 +10,7 @@ package.domain = org.hekaya
 ​source.include_exts = py,png,jpg,kv,json
 ​رقم النسخة
 ​version = 1.0
-​متطلبات بايثون/كيفي الأساسية والمكتبات الإضافية (plyer) وحزم البناء
+​المتطلبات النهائية: Python/Kivy + حزم البناء الأساسية + Plyer
 ​requirements = python3,kivy,hostpython3,sdl2,pyjnius,plyer
 ​اتجاه الشاشة
 ​orientation = portrait
